@@ -154,7 +154,28 @@ public class Test {
 					}
 				}
 				else if (vChoice == "Float") {
-					
+						float f = Float.parseFloat(v);
+						switch(rChoice) {
+						case "Float":
+							result.setText(v);
+							break;
+						case "Binary":
+							int bits = Float.floatToIntBits(f);
+							result.setText(Integer.toBinaryString(bits));
+							break;
+						case "Hex":
+							int bit2 = Float.floatToIntBits(f);
+							result.setText(Integer.toHexString(bit2).toUpperCase());
+							break;
+						case "Unsigned Decimal":
+							int bits1 = Float.floatToIntBits(f);
+							result.setText(Integer.toString(bits1));
+							break;
+						case "Signed Decimal":
+							int bit3 = Float.floatToIntBits(f);
+							result.setText(Integer.toString(convertToIntegerFromBinary(Integer.toBinaryString(bit3))));
+							break;
+						}
 				}
 				else if (vChoice == "Signed Decimal") {
 					
