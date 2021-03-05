@@ -85,7 +85,7 @@ public class Test {
 		
 		BoxValue = new JComboBox();
 		BoxValue.setFont(new Font("Times New Roman", Font.BOLD, 20));
-		BoxValue.setModel(new DefaultComboBoxModel(new String[] {"Binary", "Usigned Decimal", "Hex", "Float", "Signed Decimal"}));
+		BoxValue.setModel(new DefaultComboBoxModel(new String[] {"Binary", "Unsigned Decimal", "Hex", "Float", "Signed Decimal"}));
 		BoxValue.setBounds(39, 62, 103, 44);
 		frame.getContentPane().add(BoxValue);
 		
@@ -95,6 +95,7 @@ public class Test {
 				String v = value.getText();
 				String vChoice = (String) BoxValue.getItemAt(BoxValue.getSelectedIndex());
 				String rChoice = (String) BoxResult.getItemAt(BoxResult.getSelectedIndex());
+				
 				
 				if(vChoice == "Binary") {
 					int intBits = Integer.parseInt(v, 2);
@@ -117,13 +118,45 @@ public class Test {
 						break;
 					}
 				}
-				else if (vChoice == "Decimal") {
-					
+				else if (vChoice == "Unsigned Decimal") {
+					int unsDec = Integer.parseInt(v);
+					switch(rChoice) {
+					case "Binary":
+						result.setText(Integer.toBinaryString(unsDec));
+						break;
+					case "Hex":
+						result.setText(Integer.toHexString(unsDec).toUpperCase());
+						break;
+					default:
+						result.setText(v);
+						break;
+					}
 				}
 				else if (vChoice == "Hex") {
-					
+					int unsDec = Integer.parseInt(v, 16);
+					switch(rChoice) {
+					case "Binary":
+						result.setText(Integer.toBinaryString(unsDec));
+						break;
+					case "Unsigned Decimal":
+						result.setText(Integer.toString(unsDec));
+						break;
+					case "Signed Decimal":
+						result.setText(Integer.toString((short)unsDec));
+						break;
+					case "Float":
+						float f = Float.intBitsToFloat(unsDec);
+						result.setText(Float.toString(f));
+						break;
+					default:
+						result.setText(v);
+						break;
+					}
 				}
 				else if (vChoice == "Float") {
+					
+				}
+				else if (vChoice == "Signed Decimal") {
 					
 				}
 			}
