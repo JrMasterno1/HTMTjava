@@ -178,7 +178,22 @@ public class Test {
 						}
 				}
 				else if (vChoice == "Signed Decimal") {
-					
+					int sDec = Integer.parseInt(v);
+					switch(rChoice) {
+					case "Binary":
+						result.setText(Integer.toBinaryString(sDec));
+						break;
+					case "Float":
+						float f = Float.parseFloat(v);
+						result.setText(Float.toString(f));
+						break;
+					case "Unsigned Decimal":
+						long udec = Integer.toUnsignedLong(sDec);
+						result.setText(Long.toString(udec));
+						break;
+					case "Hex":
+						result.setText(Integer.toHexString(sDec).toUpperCase());
+					}
 				}
 			}
 		});
